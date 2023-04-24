@@ -17,3 +17,13 @@ sudo apt install code
 echo "VS Code installed successfully"
 
 # Configure keybindings
+# Get keybindings
+gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings
+# Set keybindings
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'move-window.sh'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Primary><Alt>Page_Down'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'move-window'"
+# (or)
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'move-window'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'<Primary><Alt>Page_Down'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "'/usr/local/bin/move-window.sh'"
